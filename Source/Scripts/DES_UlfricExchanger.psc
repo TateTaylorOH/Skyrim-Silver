@@ -12,11 +12,13 @@ Event OnInit()
 endEvent
 
 Event OnItemAdded(Form akBaseItem, int aiItemCount, ObjectReference akItemReference, ObjectReference akSourceContainer)
-	IF PlayerRef.GetCurrentLocation() == WindhelmLocation || PlayerRef.GetCurrentLocation() == WindhelmLocation
-		if akBaseItem == Gold001
-			int count = ref.getItemCount(akBaseItem)
-			ref.removeItem(akBaseItem, count, true)
-			ref.addItem(DES_Ulfric, count)
-		endif
+	IF PlayerRef.GetCurrentLocation() == WindhelmLocation || PlayerRef.GetCurrentLocation().GetParent() == WindhelmLocation
+		IF !aksourceContainer
+			if akBaseItem == Gold001
+				int count = aiItemCount
+				ref.removeItem(akBaseItem, count, true)
+				ref.addItem(DES_Ulfric, count, true)
+			endif
+		ENDIF
 	ENDIF
 EndEvent
