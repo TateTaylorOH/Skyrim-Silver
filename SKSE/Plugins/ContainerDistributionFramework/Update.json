@@ -20,14 +20,13 @@
       ]
     },
     {
-      "friendlyName" : "Windhelm Vendors Septims to Ulfrics",
+      "friendlyName" : "Windhelm Septims to Ulfrics",
       "conditions" : {
         "locations" : [
           "WindhelmLocation"
         ],
         "bypassUnsafeContainers": true,
-        "allowVendors" : true,
-        "onlyVendors" : true
+        "allowVendors" : true
       },
       "changes":[
         {
