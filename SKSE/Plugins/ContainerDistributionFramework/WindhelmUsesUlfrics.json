@@ -1,0 +1,22 @@
+{
+  "rules" : [
+    {
+      "friendlyName" : "Windhelm Septims to Ulfrics",
+      "conditions" : {
+        "locations" : [
+          "WindhelmLocation"
+        ],
+        "bypassUnsafeContainers": true,
+        "allowVendors" : true
+      },
+      "changes":[
+        {
+          "remove" : "0xF|Skyrim.esm",
+          "add" : [
+            "0xDE5024|Update.esm"
+          ]
+        }
+      ]
+    }
+  ]
+}
