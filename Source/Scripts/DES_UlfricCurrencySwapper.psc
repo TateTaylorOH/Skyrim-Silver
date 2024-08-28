@@ -17,7 +17,7 @@ EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
 			PlayerREF.RemovePerk(DES_WindhelmPriceAdjustmentPerk)
 		ENDIF
 		PlayerREF.AddPerk(DES_WindhelmPriceAdjustmentPerk)
-		LastCurrency = GetCurrency()
+		;debug.notification("LastCurrency is " + LastCurrency.GetName())
 		ShouldRevertCurrency = False
 		IF (!LastCurrency)
 			ShouldRevertCurrency = True
@@ -30,7 +30,7 @@ EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
 			;debug.notification("ResetCurrency")
 		ELSE
 			SetCurrency(LastCurrency)
-			;debug.notification("SetCurrency")
+			;debug.notification("Set Currency to " + LastCurrency.GetName())
 		ENDIF
 		PlayerREF.RemovePerk(DES_WindhelmPriceAdjustmentPerk)
 		LastCurrency = GetCurrency()
