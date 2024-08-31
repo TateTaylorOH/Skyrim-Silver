@@ -1,4 +1,4 @@
-Scriptname DES_ExchangeSeptimsFunctions extends Quest  
+Scriptname DES_ExchangeSeptimsFunctions extends Quest Conditional
 
 Actor Property PlayerRef auto
 GlobalVariable Property DES_UlfricWorth auto
@@ -21,3 +21,5 @@ PlayerRef.RemoveItem(Gold, convertedcount as int)
 PlayerRef.AddItem(DES_Ulfric, count)
 
 endfunction
+
+Int Property DecreeSceneComplete Auto Conditional

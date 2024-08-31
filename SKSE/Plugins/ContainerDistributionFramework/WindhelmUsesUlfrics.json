@@ -34,6 +34,23 @@
           "count" : 444
         }
       ]
+    },
+    {
+      "friendlyName" : "Fill Eyrir's Strongbox with Ulfrics",
+      "conditions" : {
+        "references" : [
+          "0x85|WindhelmUsesUlfrics.esp"
+        ],
+        "bypassUnsafeContainers": true
+      },
+      "changes":[
+        {
+          "add" : [
+            "0xDE5024|Update.esm"
+          ],
+          "count" : 44
+        }
+      ]
     }
   ]
 }

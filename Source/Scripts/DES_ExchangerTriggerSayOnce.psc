@@ -2,11 +2,11 @@ Scriptname DES_ExchangerTriggerSayOnce extends ObjectReference
 
 Actor Property PlayerRef auto
 Actor Property DES_UlfricExchangerRef auto
-Topic Property DES_UlfricExchangerDecreeSayOnce01 auto
+Scene Property DES_UlfricExchangerDecreeScene auto
 
 EVENT onTriggerEnter(objectReference triggerRef)
 	if triggerRef == PlayerRef && PlayerRef.GetParentCell() == DES_UlfricExchangerRef.GetParentCell()
-		DES_UlfricExchangerRef.Say(DES_UlfricExchangerDecreeSayOnce01)
+		DES_UlfricExchangerDecreeScene.Start()
 		Disable()
 		Delete()
 	ENDIF
