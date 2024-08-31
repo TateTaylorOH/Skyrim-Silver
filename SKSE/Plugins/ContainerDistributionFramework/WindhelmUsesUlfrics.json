@@ -17,6 +17,23 @@
           ]
         }
       ]
+    },
+    {
+      "friendlyName" : "Fill Eyrir's Chest with Ulfrics",
+      "conditions" : {
+        "references" : [
+          "0x84|WindhelmUsesUlfrics.esp"
+        ],
+        "bypassUnsafeContainers": true
+      },
+      "changes":[
+        {
+          "add" : [
+            "0xDE5024|Update.esm"
+          ],
+          "count" : 444
+        }
+      ]
     }
   ]
 }
