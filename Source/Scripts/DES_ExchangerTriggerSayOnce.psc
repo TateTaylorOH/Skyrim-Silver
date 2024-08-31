@@ -6,9 +6,11 @@ Scene Property DES_UlfricExchangerDecreeScene auto
 ObjectReference Property xMarkerHeading auto
 
 EVENT onTriggerEnter(objectReference triggerRef)
-	DES_UlfricExchangerDecreeScene.Start()
-	xMarkerHeading.Disable()
-	xMarkerHeading.Delete()
-	Disable()
-	Delete()
+	if triggerRef == PlayerRef 
+		DES_UlfricExchangerDecreeScene.Start()
+		xMarkerHeading.Disable()
+		xMarkerHeading.Delete()
+		Disable()
+		Delete()
+	endif
 ENDEVENT
