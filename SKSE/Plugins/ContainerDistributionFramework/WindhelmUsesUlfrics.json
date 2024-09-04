@@ -4,7 +4,7 @@
       "friendlyName" : "Windhelm Septims to Ulfrics",
       "conditions" : {
         "locations" : [
-          "WindhelmLocation"
+          "0x18A57|Skyrim.esm"
         ],
         "bypassUnsafeContainers": true,
         "allowVendors" : true
