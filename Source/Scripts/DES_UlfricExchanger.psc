@@ -10,7 +10,7 @@ Event OnInit()
 endEvent
 
 Event OnItemAdded(Form akBaseItem, int aiItemCount, ObjectReference akItemReference, ObjectReference akSourceContainer)
-	IF PlayerRef.GetCurrentLocation() == WindhelmLocation || PlayerRef.GetCurrentLocation().GetParent() == WindhelmLocation
+	IF PlayerRef.IsInLocation(WindhelmLocation)
 		IF !aksourceContainer
 			if akBaseItem == Gold001
 				int count = aiItemCount

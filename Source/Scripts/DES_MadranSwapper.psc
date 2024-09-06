@@ -11,7 +11,7 @@ Form LastCurrency
 Import SEA_BarterFunctions 
 
 EVENT OnActivate(ObjectReference akActionRef)
-	IF PlayerRef.GetCurrentLocation() == WindhelmLocation || PlayerRef.GetCurrentLocation() == WindhelmLocation
+	IF PlayerRef.IsInLocation(WindhelmLocation)
 		LastCurrency = GetCurrency()
 		;debug.notification("(Ma'dran) LastCurrency is " + LastCurrency.GetName())
 		IF (ShouldRevertCurrency)
@@ -25,7 +25,7 @@ EVENT OnActivate(ObjectReference akActionRef)
 ENDEVENT
 
 EVENT OnMenuClose(String MenuName)
-	IF MenuName == "Dialogue Menu" && (PlayerRef.GetCurrentLocation()  == WindhelmLocation || PlayerRef.GetCurrentLocation() == WindhelmLocation)
+	IF MenuName == "Dialogue Menu" && PlayerRef.IsInLocation(WindhelmLocation)
 		ShouldRevertCurrency = False
 		IF (!LastCurrency)
 			ShouldRevertCurrency = True

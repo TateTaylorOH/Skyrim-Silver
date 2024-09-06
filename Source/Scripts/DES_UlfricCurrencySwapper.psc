@@ -16,8 +16,12 @@ Form LastCurrency
 
 Import SEA_BarterFunctions 
 
+Event OnPlayerGameLoad()
+	DES_Ulfric.SetGoldValue(DES_UlfricWorth.getValue() as int)
+EndEvent
+
 EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
-	IF akNewLoc == WindhelmLocation || akNewLoc.GetParent() == WindhelmLocation
+	IF PlayerRef.IsInLocation(WindhelmLocation)
 	;debug.messagebox("We are in Windhelm.")
 		IF (PlayerREF.HasPerk(DES_WindhelmPriceAdjustmentPerk))
 			PlayerREF.RemovePerk(DES_WindhelmPriceAdjustmentPerk)
@@ -31,12 +35,13 @@ EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
 		ELSE
 			DES_UlfricWorth.SetValue(0.8)
 		ENDIF
+		DES_Ulfric.SetGoldValue(DES_UlfricWorth.getValue() as int)
 		ShouldRevertCurrency = False
 		IF (!LastCurrency)
 			ShouldRevertCurrency = True
 		ENDIF
 		SetCurrency(DES_Ulfric)
-	ELSEIF akNewLoc != WindhelmLocation && akNewLoc.GetParent() != WindhelmLocation
+	ELSEIF !PlayerRef.IsInLocation(WindhelmLocation)
 	;debug.messagebox("We are not in Windhelm.")
 		IF (ShouldRevertCurrency)
 			ResetCurrency()
