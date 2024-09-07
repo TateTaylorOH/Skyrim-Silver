@@ -35,6 +35,7 @@ EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
 		ELSE
 			DES_UlfricWorth.SetValue(0.8)
 		ENDIF
+		(Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).UlfricValue = (DES_UlfricWorth.getValue() as float)
 		DES_Ulfric.SetGoldValue(DES_UlfricWorth.getValue() as int)
 		ShouldRevertCurrency = False
 		IF (!LastCurrency)

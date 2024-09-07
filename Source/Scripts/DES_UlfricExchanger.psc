@@ -1,11 +1,17 @@
 Scriptname DES_UlfricExchanger extends ReferenceAlias  
 
-Actor Property PlayerRef auto
 MiscObject Property Gold001 auto
 MiscObject Property DES_Ulfric auto
 Location Property WindhelmLocation auto
 
+Actor Property PlayerRef auto
+
 Event OnInit()
+	AddInventoryEventFilter(Gold001)
+endEvent
+
+Event OnPlayerLoadGame()
+	RemoveAllInventoryEventFilters()
 	AddInventoryEventFilter(Gold001)
 endEvent
 
