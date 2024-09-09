@@ -19,6 +19,45 @@
       ]
     },
     {
+      "friendlyName" : "Add Master Trader Ulfrics to Windhelm Vendors",
+      "conditions" : {
+        "locations" : [
+          "0x18A57|Skyrim.esm"
+        ],
+        "bypassUnsafeContainers": true,
+        "allowVendors" : true,
+        "onlyVendors" : true
+      },
+      "changes":[
+        {
+          "add" : [
+            "0xAF6|WindhelmUsesUlfrics.esp"
+          ]
+        }
+      ]
+    },
+    {
+      "friendlyName" : "Fill Vendor Chests with Ulfrics",
+      "conditions" : {
+        "locations" : [
+          "0x130FF|Skyrim.esm",
+          "0x16E2A|Dragonborn.esm"
+       ],
+        "bypassUnsafeContainers": true,
+        "allowVendors" : true,
+        "onlyVendors" : true
+      },
+      "changes":[
+        {
+          "add" : [
+            "0xAF5|WindhelmUsesUlfrics.esp",
+            "0xAF6|WindhelmUsesUlfrics.esp"
+          ],
+          "count" : 1
+        }
+      ]
+    },
+    {
       "friendlyName" : "Fill Eyrir's Chest with Ulfrics",
       "conditions" : {
         "references" : [
