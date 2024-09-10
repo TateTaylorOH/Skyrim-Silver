@@ -6,32 +6,13 @@
         "locations" : [
           "0x18A57|Skyrim.esm"
         ],
-        "bypassUnsafeContainers": true,
-        "allowVendors" : true
+        "bypassUnsafeContainers": true
       },
       "changes":[
         {
           "remove" : "0xF|Skyrim.esm",
           "add" : [
             "0xDE5024|Update.esm"
-          ]
-        }
-      ]
-    },
-    {
-      "friendlyName" : "Add Master Trader Ulfrics to Windhelm Vendors",
-      "conditions" : {
-        "locations" : [
-          "0x18A57|Skyrim.esm"
-        ],
-        "bypassUnsafeContainers": true,
-        "allowVendors" : true,
-        "onlyVendors" : true
-      },
-      "changes":[
-        {
-          "add" : [
-            "0xAF6|WindhelmUsesUlfrics.esp"
           ]
         }
       ]
@@ -49,11 +30,10 @@
       },
       "changes":[
         {
+          "remove" : "0xF|Skyrim.esm",
           "add" : [
-            "0xAF5|WindhelmUsesUlfrics.esp",
-            "0xAF6|WindhelmUsesUlfrics.esp"
-          ],
-          "count" : 1
+            "0xAF5|WindhelmUsesUlfrics.esp"
+          ]
         }
       ]
     },
