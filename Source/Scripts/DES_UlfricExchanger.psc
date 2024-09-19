@@ -20,9 +20,9 @@ Event OnItemAdded(Form akBaseItem, int aiItemCount, ObjectReference akItemRefere
 	IF DES_UlfricLocations.HasForm(PlayerRef.GetCurrentLocation()) || DES_UlfricLocations.HasForm(PlayerRef.GetCurrentLocation().GetParent())
 		IF !aksourceContainer
 			if akBaseItem == Gold001
-				int count = aiItemCount*(DES_UlfricWorth.GetValue() as float)
-				PlayerRef.removeItem(akBaseItem, count, true)
-				PlayerRef.addItem(DES_Ulfric, count, true)
+				float count = aiItemCount*DES_UlfricWorth.GetValue()
+				PlayerRef.removeItem(akBaseItem, count as int, true)
+				PlayerRef.addItem(DES_Ulfric, count as int, true)
 			endif
 		ENDIF
 	ENDIF
