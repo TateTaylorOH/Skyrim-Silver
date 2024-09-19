@@ -2,7 +2,7 @@ Scriptname DES_MadranSwapper extends ReferenceAlias
 
 Actor Property PlayerRef auto
 MiscObject Property Gold001 auto
-Location Property WindhelmLocation auto
+Formlist Property DES_UlfricLocations auto
 Perk Property DES_WindhelmPriceAdjustmentPerk auto
 
 Bool ShouldRevertCurrency
@@ -11,7 +11,7 @@ Form LastCurrency
 Import SEA_BarterFunctions 
 
 EVENT OnActivate(ObjectReference akActionRef)
-	IF PlayerRef.IsInLocation(WindhelmLocation)
+	IF DES_UlfricLocations.HasForm(PlayerRef.GetCurrentLocation()) || DES_UlfricLocations.HasForm(PlayerRef.GetCurrentLocation().getParent()) 
 		LastCurrency = GetCurrency()
 		;debug.notification("(Ma'dran) LastCurrency is " + LastCurrency.GetName())
 		IF (ShouldRevertCurrency)
@@ -25,7 +25,7 @@ EVENT OnActivate(ObjectReference akActionRef)
 ENDEVENT
 
 EVENT OnMenuClose(String MenuName)
-	IF MenuName == "Dialogue Menu" && PlayerRef.IsInLocation(WindhelmLocation)
+	IF MenuName == "Dialogue Menu" && (DES_UlfricLocations.HasForm(PlayerRef.GetCurrentLocation()) || DES_UlfricLocations.HasForm(PlayerRef.GetCurrentLocation().getParent()))
 		ShouldRevertCurrency = False
 		IF (!LastCurrency)
 			ShouldRevertCurrency = True

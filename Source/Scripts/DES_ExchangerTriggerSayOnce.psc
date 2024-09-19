@@ -1,13 +1,12 @@
 Scriptname DES_ExchangerTriggerSayOnce extends ObjectReference  
 
 Actor Property PlayerRef auto
-Actor Property DES_UlfricExchangerRef auto
-Scene Property DES_UlfricExchangerDecreeScene auto
+Quest Property DES_UlfricWindhelmServices auto
 ObjectReference Property xMarkerHeading auto
 
 EVENT onTriggerEnter(objectReference triggerRef)
 	if triggerRef == PlayerRef 
-		DES_UlfricExchangerDecreeScene.Start()
+		DES_UlfricWindhelmServices.SetStage(0)
 		xMarkerHeading.Disable()
 		xMarkerHeading.Delete()
 		Disable()
