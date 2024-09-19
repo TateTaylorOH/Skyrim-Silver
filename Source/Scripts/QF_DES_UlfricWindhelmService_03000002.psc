@@ -41,8 +41,8 @@ EndFunction
 ;BEGIN FRAGMENT Fragment_11
 Function Fragment_11()
 ;BEGIN CODE
-Alias_Player.RemoveAllInventoryEventFilters()
 (Alias_Player as DES_UlfricTutorialTracker).GoToState("Waiting")
+Alias_Player.RemoveAllInventoryEventFilters()
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -51,8 +51,8 @@ EndFunction
 Function Fragment_9()
 ;BEGIN CODE
 SetObjectiveDisplayed(5)
-Alias_Player.AddInventoryEventFilter(DES_Ulfric)
 (Alias_Player as DES_UlfricTutorialTracker).GoToState("WaitingOnUlfrics")
+Alias_Player.AddInventoryEventFilter(DES_Ulfric)
 ;END CODE
 EndFunction
 ;END FRAGMENT
