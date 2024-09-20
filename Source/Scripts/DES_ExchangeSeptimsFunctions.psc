@@ -34,7 +34,7 @@ import SEA_BarterFunctions
 
 Event OnCustomBarterMenu(Actor a_kSeller)
 	If GetCurrency() == DES_Ulfric
-		IF PlayerRef.GetItemCount(DES_Ulfric) == 0
+		IF !getStageDone(11) && PlayerRef.GetItemCount(DES_Ulfric) == 0
 			setstage(5)
 		elseif PlayerRef.GetItemCount(DES_Ulfric) > 0
 			setstage(11)
