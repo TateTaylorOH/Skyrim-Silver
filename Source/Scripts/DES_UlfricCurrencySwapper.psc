@@ -14,6 +14,8 @@ Keyword Property CWOwner auto
 Formlist Property DES_RentRoomLocationExclusions auto
 Formlist Property DES_UlfricLocations auto
 
+float goldValue
+
 Bool ShouldRevertCurrency
 Form LastCurrency
 
@@ -39,13 +41,20 @@ EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
 		;debug.notification("LastCurrency is " + LastCurrency.GetName())
 		IF WindhelmLocation.GetKeywordData(CWOwner) == CWImperial.GetValue() as int
 			DES_UlfricWorth.SetValue(2)
+			goldValue = 1/DES_UlfricWorth.GetValue() as float
+			DES_Ulfric.SetGoldValue(goldValue as int)
+			(Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).UlfricValue = goldValue as int
 		ELSEIF SolitudeLocation.GetKeywordData(CWOwner) == CWSons.GetValue() as int
 			DES_UlfricWorth.SetValue(1.0)
+			goldValue = 1/DES_UlfricWorth.GetValue() as float 
+			DES_Ulfric.SetGoldValue(goldValue as int)
+			(Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).UlfricValue = goldValue as int
 		ELSE
 			DES_UlfricWorth.SetValue(1.25)
+			goldValue = 1/DES_UlfricWorth.GetValue() as float
+			DES_Ulfric.SetGoldValue(goldValue as int)
+			(Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).UlfricValue = goldValue as int
 		ENDIF
-		(Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).UlfricValue = (DES_UlfricWorth.getValue() as float)
-		DES_Ulfric.SetGoldValue(DES_UlfricWorth.getValue() as int)
 		ShouldRevertCurrency = False
 		IF (!LastCurrency)
 			ShouldRevertCurrency = True
@@ -66,7 +75,8 @@ EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
 ENDEVENT
 
 Function InitializeThings()
-	DES_Ulfric.SetGoldValue(DES_UlfricWorth.getValue() as int)
+	goldValue = 1/DES_UlfricWorth.GetValue() as float
+	DES_Ulfric.SetGoldValue(goldValue as int)
 	IF !DES_RentRoomLocationExclusions.HasForm(WindhelmLocation)
 		DES_RentRoomLocationExclusions.AddForm(WindhelmLocation)
 	ENDIF
