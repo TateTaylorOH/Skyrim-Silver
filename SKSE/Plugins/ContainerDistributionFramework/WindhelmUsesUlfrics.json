@@ -18,7 +18,7 @@
       ]
     },
     {
-      "friendlyName" : "Fill Vendor Chests with Ulfrics",
+      "friendlyName" : "Fill Vendor Chests with Ulfrics | Worth = 0.80",
       "conditions" : {
         "locations" : [
           "0x130FF|Skyrim.esm",
@@ -26,7 +26,56 @@
        ],
         "bypassUnsafeContainers": true,
         "allowVendors" : true,
-        "onlyVendors" : true
+        "onlyVendors" : true,
+        "globals": [
+          "DES_UlfricWorth|1.25"
+       ]
+      },
+      "changes":[
+        {
+          "remove" : "0xF|Skyrim.esm",
+          "add" : [
+            "0xAF5|WindhelmUsesUlfrics.esp"
+          ]
+        }
+      ]
+    },
+    {
+      "friendlyName" : "Fill Vendor Chests with Ulfrics | Worth = 0.50",
+      "conditions" : {
+        "locations" : [
+          "0x130FF|Skyrim.esm",
+          "0x16E2A|Dragonborn.esm"
+       ],
+        "bypassUnsafeContainers": true,
+        "allowVendors" : true,
+        "onlyVendors" : true,
+        "globals": [
+          "DES_UlfricWorth|2"
+       ]
+      },
+      "changes":[
+        {
+          "remove" : "0xF|Skyrim.esm",
+          "add" : [
+            "0xAC7|WindhelmUsesUlfrics.esp"
+          ]
+        }
+      ]
+    },
+    {
+      "friendlyName" : "Fill Vendor Chests with Ulfrics | Worth = 1.0",
+      "conditions" : {
+        "locations" : [
+          "0x130FF|Skyrim.esm",
+          "0x16E2A|Dragonborn.esm"
+       ],
+        "bypassUnsafeContainers": true,
+        "allowVendors" : true,
+        "onlyVendors" : true,
+        "globals": [
+          "DES_UlfricWorth|1"
+       ]
       },
       "changes":[
         {
