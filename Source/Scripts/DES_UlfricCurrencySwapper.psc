@@ -32,13 +32,14 @@ Event OnPlayerGameLoad()
 EndEvent
 
 EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
-	IF DES_UlfricLocations.HasForm(PlayerRef.GetCurrentLocation()) || DES_UlfricLocations.HasForm(PlayerRef.GetCurrentLocation().GetParent()) 
-	;debug.messagebox("We are in Windhelm.")
+	int i = DES_UlfricLocations.Find(akNewLoc)
+	IF (PlayerRef.IsInLocation(DES_UlfricLocations.GetAt(i) as Location))
+	debug.messagebox("We are in Windhelm.")
 		IF (PlayerREF.HasPerk(DES_WindhelmPriceAdjustmentPerk))
 			PlayerREF.RemovePerk(DES_WindhelmPriceAdjustmentPerk)
 		ENDIF
 		PlayerREF.AddPerk(DES_WindhelmPriceAdjustmentPerk)
-		;debug.notification("LastCurrency is " + LastCurrency.GetName())
+		debug.notification("LastCurrency is " + LastCurrency.GetName())
 		IF WindhelmLocation.GetKeywordData(CWOwner) == CWImperial.GetValue() as int
 			DES_UlfricWorth.SetValue(2)
 			goldValue = 1/DES_UlfricWorth.GetValue() as float
@@ -60,14 +61,15 @@ EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
 			ShouldRevertCurrency = True
 		ENDIF
 		SetCurrency(DES_Ulfric)
-	ELSEIF !DES_UlfricLocations.HasForm(PlayerRef.GetCurrentLocation()) && !DES_UlfricLocations.HasForm(PlayerRef.GetCurrentLocation().GetParent()) 
-	;debug.messagebox("We are not in Windhelm.")
+	ELSEIF i == -1
+	debug.messagebox("We are not in Windhelm.")
 		IF (ShouldRevertCurrency)
 			ResetCurrency()
-			;debug.notification("ResetCurrency")
+			debug.notification("ResetCurrency")
+			LastCurrency = NONE
 		ELSE
 			SetCurrency(LastCurrency)
-			;debug.notification("Set Currency to " + LastCurrency.GetName())
+			debug.notification("Set Currency to " + LastCurrency.GetName())
 		ENDIF
 		PlayerREF.RemovePerk(DES_WindhelmPriceAdjustmentPerk)
 		LastCurrency = GetCurrency()
