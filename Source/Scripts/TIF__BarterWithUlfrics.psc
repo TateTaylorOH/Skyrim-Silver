@@ -41,6 +41,7 @@ Function BarterWithUlfrics(Actor a_kVendor)
         ShouldRevertCurrency = True
     EndIf
     SetCurrency(DES_Ulfric)
+	(Quest.GetQuest("DES_DramMorrowindServicesQuest") as DES_ExchangeDramsFunctions).BarteringInSeptims  = 1
 
     a_kVendor.ShowBarterMenu()
 
@@ -56,6 +57,7 @@ Function BarterWithUlfrics(Actor a_kVendor)
     Else
 
         SetCurrency(LastCurrency)
+	(Quest.GetQuest("DES_DramMorrowindServicesQuest") as DES_ExchangeDramsFunctions).BarteringInSeptims  = 0
     EndIf
 	PlayerREF.RemovePerk(DES_WindhelmPriceAdjustmentPerk)
 EndFunction

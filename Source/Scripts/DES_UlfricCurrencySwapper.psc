@@ -16,8 +16,7 @@ Formlist Property DES_UlfricLocations auto
 
 float goldValue
 
-Bool ShouldRevertCurrency
-Form LastLocation
+GlobalVariable Property DES_CurrencyIsReverting auto
 
 Quest Property DES_UlfricWindhelmServices auto
 
@@ -32,28 +31,32 @@ Event OnPlayerGameLoad()
 EndEvent
 
 EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
-	int i = DES_UlfricLocations.Find(akNewLoc)
-	IF (PlayerRef.IsInLocation(DES_UlfricLocations.GetAt(i) as Location))
-		SwapToUlfrics()
-	ELSEIF i == -1
-	;debug.messagebox("We are not in Windhelm.")
-		ResetCurrency()
-		;debug.notification("ResetCurrency")
-		PlayerREF.RemovePerk(DES_WindhelmPriceAdjustmentPerk)
+	IF (DES_UlfricLocations.HasForm(PlayerRef.GetCurrentLocation())) || (DES_UlfricLocations.HasForm(PlayerRef.GetCurrentLocation().GetParent()))
+		RegisterForSingleUpdate(1)
+	ELSE
+		;debug.messagebox("We are not in Windhelm.")
+		IF GetCurrency() == DES_Ulfric
+			DES_CurrencyIsReverting.SetValue(1)
+			;debug.notification("UlfricMod: CurrencyIsReverting = " + DES_CurrencyIsReverting.GetValue())
+			ResetCurrency()
+			;debug.notification("UlfricMod: ResetCurrency")
+			PlayerREF.RemovePerk(DES_WindhelmPriceAdjustmentPerk)
+			DES_CurrencyIsReverting.SetValue(0)
+			;debug.notification("UlfricMod: CurrencyIsReverting = " + DES_CurrencyIsReverting.GetValue())
+		ENDIF
 	ENDIF
-	LastLocation = akNewLoc
 ENDEVENT
 
-Event OnCurrencyRevert(Form a_kOldCurrency)
-	int i = DES_UlfricLocations.Find(LastLocation)
-	IF (PlayerRef.IsInLocation(DES_UlfricLocations.GetAt(i) as Location))
-		SwapToUlfrics()
-	ENDIF
-	LastLocation = NONE
-EndEvent
+event OnUpdate()
+	SwapToUlfrics()
+endEvent
 
 Function SwapToUlfrics()
 	;debug.messagebox("We are in Windhelm.")
+	while DES_CurrencyIsReverting.GetValue() == 1
+		utility.wait(0.1)
+		;debug.notification("UlfricMod: Waiting to swap")
+	endwhile
 	IF (PlayerREF.HasPerk(DES_WindhelmPriceAdjustmentPerk))
 		PlayerREF.RemovePerk(DES_WindhelmPriceAdjustmentPerk)
 	ENDIF
@@ -62,26 +65,27 @@ Function SwapToUlfrics()
 		DES_UlfricWorth.SetValue(2)
 		goldValue = 1/DES_UlfricWorth.GetValue() as float
 		DES_Ulfric.SetGoldValue(goldValue as int)
-		(Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).UlfricValue = goldValue as int
+		(Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).UlfricValue = goldValue as float
 	ELSEIF SolitudeLocation.GetKeywordData(CWOwner) == CWSons.GetValue() as int
 		DES_UlfricWorth.SetValue(1.0)
 		goldValue = 1/DES_UlfricWorth.GetValue() as float 
 		DES_Ulfric.SetGoldValue(goldValue as int)
-		(Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).UlfricValue = goldValue as int
+		(Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).UlfricValue = goldValue as float
 	ELSE
 		DES_UlfricWorth.SetValue(1.25)
 		goldValue = 1/DES_UlfricWorth.GetValue() as float
 		DES_Ulfric.SetGoldValue(goldValue as int)
-		(Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).UlfricValue = goldValue as int
+		(Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).UlfricValue = goldValue as float
 	ENDIF
 	SetCurrency(DES_Ulfric)
+	;debug.notification("UlfricMod: Swapped")
 EndFunction
 
 Function InitializeThings()
-	SEA_BarterFunctions.RegisterFormForAllEvents(getowningquest())
 	IF !DES_RentRoomLocationExclusions.HasForm(WindhelmLocation)
 		DES_RentRoomLocationExclusions.AddForm(WindhelmLocation)
 	ENDIF
 	goldValue = 1/DES_UlfricWorth.GetValue() as float
 	DES_Ulfric.SetGoldValue(goldValue as int)
+	(Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).UlfricValue = goldValue as float
 endFunction
