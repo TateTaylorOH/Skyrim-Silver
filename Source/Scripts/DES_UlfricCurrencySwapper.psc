@@ -13,8 +13,13 @@ Keyword Property CWOwner auto
 
 Formlist Property DES_RentRoomLocationExclusions auto
 Formlist Property DES_UlfricLocations auto
+GlobalVariable Property RoomCost auto
+GlobalVariable Property DES_UlfricRoomCost auto
+GlobalVariable[] Property CostsToUpdate auto
+int[] property defaultCosts auto
 
 float goldValue
+
 
 GlobalVariable Property DES_CurrencyIsReverting auto
 
@@ -77,6 +82,13 @@ Function SwapToUlfrics()
 		DES_Ulfric.SetGoldValue(goldValue as int)
 		(Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).UlfricValue = goldValue as float
 	ENDIF
+	int i = 0
+	while i < CostsToUpdate.Length
+		CostsToUpdate[i].SetValue((defaultCosts[i])*(DES_UlfricWorth.GetValue()))
+		getOwningQuest().UpdateCurrentInstanceGlobal(CostsToUpdate[i])
+		i += 1
+	endwhile
+	DES_UlfricRoomCost.SetValue(RoomCost.GetValue()*DES_UlfricWorth.GetValue())
 	SetCurrency(DES_Ulfric)
 	;debug.notification("UlfricMod: Swapped")
 EndFunction
