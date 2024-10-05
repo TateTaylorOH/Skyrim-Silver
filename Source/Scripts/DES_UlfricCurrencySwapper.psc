@@ -16,14 +16,16 @@ Formlist Property DES_UlfricLocations auto
 GlobalVariable Property RoomCost auto
 GlobalVariable Property DES_UlfricRoomCost auto
 GlobalVariable[] Property CostsToUpdate auto
+GlobalVariable Property HorseCost auto
+GlobalVariable Property DES_UlfricHorseCost auto
 int[] property defaultCosts auto
 
 float goldValue
 
-
 GlobalVariable Property DES_CurrencyIsReverting auto
 
 Quest Property DES_UlfricWindhelmServices auto
+Quest property HousePurchase auto
 
 Import SEA_BarterFunctions 
 
@@ -85,10 +87,13 @@ Function SwapToUlfrics()
 	int i = 0
 	while i < CostsToUpdate.Length
 		CostsToUpdate[i].SetValue((defaultCosts[i])*(DES_UlfricWorth.GetValue()))
-		getOwningQuest().UpdateCurrentInstanceGlobal(CostsToUpdate[i])
+		HousePurchase.UpdateCurrentInstanceGlobal(CostsToUpdate[i])
 		i += 1
 	endwhile
 	DES_UlfricRoomCost.SetValue(RoomCost.GetValue()*DES_UlfricWorth.GetValue())
+	DES_UlfricWindhelmServices.UpdateCurrentInstanceGlobal(DES_UlfricRoomCost)
+	DES_UlfricHorseCost.SetValue(HorseCost.GetValue()*DES_UlfricWorth.GetValue())
+	DES_UlfricWindhelmServices.UpdateCurrentInstanceGlobal(DES_UlfricHorseCost)
 	SetCurrency(DES_Ulfric)
 	;debug.notification("UlfricMod: Swapped")
 EndFunction
