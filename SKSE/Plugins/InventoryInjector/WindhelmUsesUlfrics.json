@@ -4,22 +4,11 @@
     {
       "match": {
         "formType": "MiscItem",
-        "formId": {
-          "anyOf": [
-            "Update.esm|DE5024"
-          ]
-        }
+        "formId": "Update.esm|DE5024"
       },
       "assign": {
-        "subType": "Gold"
-      }
-    },
-    {
-      "match": {
-        "formType": "MiscItem",
-        "subType": "Gold"
-      },
-      "assign": {
+        "subType": "Gold",
+        "iconColor": "#CCCC33",
         "subTypeDisplay": "$Currency"
       }
     }
