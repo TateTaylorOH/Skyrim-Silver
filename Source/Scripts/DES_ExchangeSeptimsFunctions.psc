@@ -3,6 +3,7 @@ Scriptname DES_ExchangeSeptimsFunctions extends Quest Conditional
 Actor Property PlayerRef auto
 GlobalVariable Property DES_UlfricWorth auto
 MiscObject Property DES_Ulfric auto
+Message Property DES_CurrencySwapperTutorialMessage auto
 
 ;--------------------------------------------------
 ;EXCHANGE FUNCTIONS
@@ -33,6 +34,7 @@ endfunction
 import SEA_BarterFunctions
 
 Event OnCustomBarterMenu(Actor a_kSeller)
+	ShowTutorialMessage(DES_CurrencySwapperTutorialMessage)
 	If GetCurrency() == DES_Ulfric
 		IF !getStageDone(11) && PlayerRef.GetItemCount(DES_Ulfric) == 0
 			setstage(5)
