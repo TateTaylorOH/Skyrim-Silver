@@ -1,5 +1,6 @@
-Scriptname DES_UlfricExchanger extends ReferenceAlias  
+Scriptname DES_UlfricGoldConverter extends ReferenceAlias  
 
+Quest Property DES_CurrencyFramework auto
 MiscObject Property Gold001 auto
 MiscObject Property DES_Ulfric auto
 GlobalVariable Property DES_UlfricWorth auto
@@ -18,13 +19,6 @@ Event OnPlayerLoadGame()
 endEvent
 
 Event OnItemAdded(Form akBaseItem, int aiItemCount, ObjectReference akItemReference, ObjectReference akSourceContainer)
-	IF DES_UlfricLocations.HasForm(PlayerRef.GetCurrentLocation()) || DES_UlfricLocations.HasForm(PlayerRef.GetCurrentLocation().GetParent())
-		IF !aksourceContainer && DES_ConvertCoins.GetValue() > 0
-			if akBaseItem == Gold001
-				float count = aiItemCount*DES_UlfricWorth.GetValue()
-				PlayerRef.removeItem(akBaseItem, aiItemCount as int, true)
-				PlayerRef.addItem(DES_Ulfric, count as int, true)
-			endif
-		ENDIF
-	ENDIF
+	(DES_CurrencyFramework as DES_CurrencyFramework_Functions).ConvertCoins(DES_UlfricLocations, akSourceContainer, akBaseItem, Gold001, aiItemCount, DES_UlfricWorth, DES_Ulfric)
 EndEvent
+
