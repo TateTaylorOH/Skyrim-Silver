@@ -1,6 +1,6 @@
 ;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
 ;NEXT FRAGMENT INDEX 13
-Scriptname QF_DES_UlfricWindhelmService_03000002 Extends Quest Hidden
+Scriptname QF_DES_UlfricWindhelmService_03000002 Extends Quest Hidden Conditional
 
 ;BEGIN ALIAS PROPERTY WindhelmHostler
 ;ALIAS PROPERTY TYPE ReferenceAlias
