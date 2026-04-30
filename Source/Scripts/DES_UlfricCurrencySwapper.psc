@@ -1,7 +1,5 @@
 Scriptname DES_UlfricCurrencySwapper extends ReferenceAlias
 
-Import SEA_BarterFunctions 
-
 Quest Property DES_CurrencyFramework auto
 Actor Property PlayerRef auto
 MiscObject Property DES_Ulfric Auto 
