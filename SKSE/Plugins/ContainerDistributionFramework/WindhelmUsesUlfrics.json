@@ -21,8 +21,7 @@
       "friendlyName" : "Fill Vendor Chests with Ulfrics | Worth = 0.80",
       "conditions" : {
         "locations" : [
-          "0x130FF|Skyrim.esm",
-          "0x16E2A|Dragonborn.esm"
+          "0x18A57|Skyrim.esm"
        ],
         "bypassUnsafeContainers": true,
         "allowVendors" : true,
@@ -44,8 +43,7 @@
       "friendlyName" : "Fill Vendor Chests with Ulfrics | Worth = 0.50",
       "conditions" : {
         "locations" : [
-          "0x130FF|Skyrim.esm",
-          "0x16E2A|Dragonborn.esm"
+          "0x18A57|Skyrim.esm"
        ],
         "bypassUnsafeContainers": true,
         "allowVendors" : true,
@@ -67,8 +65,7 @@
       "friendlyName" : "Fill Vendor Chests with Ulfrics | Worth = 1.0",
       "conditions" : {
         "locations" : [
-          "0x130FF|Skyrim.esm",
-          "0x16E2A|Dragonborn.esm"
+          "0x18A57|Skyrim.esm"
        ],
         "bypassUnsafeContainers": true,
         "allowVendors" : true,

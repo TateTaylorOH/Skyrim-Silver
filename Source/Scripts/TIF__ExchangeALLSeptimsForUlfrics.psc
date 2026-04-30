@@ -6,12 +6,15 @@ Scriptname TIF__ExchangeALLSeptimsForUlfrics Extends TopicInfo Hidden
 Function Fragment_0(ObjectReference akSpeakerRef)
 Actor akSpeaker = akSpeakerRef as Actor
 ;BEGIN CODE
-(GetOwningQuest() as DES_ExchangeSeptimsFunctions).ExchangeSeptims(Gold001, PlayerRef.GetItemCount(Gold001))
+(DES_CurrencyFramework as DES_CurrencyFramework_Functions).ExchangeCoins(oldcoin, PlayerRef.GetItemCount(oldcoin), newcoin, coinworth)
 ;END CODE
 EndFunction
 ;END FRAGMENT
 
 ;END FRAGMENT CODE - Do not edit anything between this and the begin comment
 
-MiscObject Property Gold001 auto
+Quest Property DES_CurrencyFramework auto
+MiscObject Property oldcoin auto
 Actor Property PlayerRef auto
+MiscObject Property newcoin auto
+GlobalVariable Property coinworth auto
