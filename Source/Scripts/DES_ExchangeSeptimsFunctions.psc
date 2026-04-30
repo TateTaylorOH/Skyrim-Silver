@@ -8,24 +8,24 @@ Message Property DES_CurrencySwapperTutorialMessage auto
 ;--------------------------------------------------
 ;EXCHANGE FUNCTIONS
 ;--------------------------------------------------
-
-function ExchangeSeptims(MiscObject Gold, int count)
-
-float worth = DES_UlfricWorth.GetValue()
-float convertedcount = count*worth
-PlayerRef.RemoveItem(Gold, count)
-PlayerRef.AddItem(DES_Ulfric, convertedcount as int)
-
-endfunction
-
-function ExchangeSeptimsForRoom(MiscObject Gold, int count)
-
-float worth = DES_UlfricWorth.GetValue()
-float convertedcount = count/worth
-PlayerRef.RemoveItem(Gold, convertedcount as int)
-PlayerRef.AddItem(DES_Ulfric, count)
-
-endfunction
+;
+;function ExchangeSeptims(MiscObject Gold, int count)
+;
+;float worth = DES_UlfricWorth.GetValue()
+;float convertedcount = count*worth
+;PlayerRef.RemoveItem(Gold, count)
+;PlayerRef.AddItem(DES_Ulfric, convertedcount as int)
+;
+;endfunction
+;
+;function ExchangeSeptimsForRoom(MiscObject Gold, int count)
+;
+;float worth = DES_UlfricWorth.GetValue()
+;float convertedcount = count/worth
+;PlayerRef.RemoveItem(Gold, convertedcount as int)
+;PlayerRef.AddItem(DES_Ulfric, count)
+;
+;endfunction
 
 ;--------------------------------------------------
 ;TUTORIAL QUEST

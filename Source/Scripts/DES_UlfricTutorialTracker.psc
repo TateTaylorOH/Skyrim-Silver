@@ -2,16 +2,6 @@ Scriptname DES_UlfricTutorialTracker   extends ReferenceAlias
 
 miscobject property DES_ulfric auto
 
-import SEA_BarterFunctions
-
-Event OnInit()
-	SEA_BarterFunctions.RegisterFormForAllEvents(getowningquest())
-endevent
-
-Event OnPlayerGameLoad()
-	SEA_BarterFunctions.RegisterFormForAllEvents(getowningquest())
-endevent
-
 auto state Waiting
 endState
 
