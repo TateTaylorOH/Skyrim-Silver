@@ -1,41 +1,15 @@
 Scriptname DES_UlfricCurrencySwapper extends ReferenceAlias
 
-Actor Property PlayerREF Auto
-MiscObject Property DES_Ulfric Auto 
-Perk Property DES_WindhelmPriceAdjustmentPerk auto
-
-GlobalVariable Property DES_UlfricWorth auto
-GlobalVariable Property CWSons auto
-GlobalVariable Property CWImperial auto
-Location Property WindhelmLocation auto
-Location Property SolitudeLocation auto
-Keyword Property CWOwner auto
-
-Formlist Property DES_RentRoomLocationExclusions auto
-Formlist Property DES_UlfricLocations auto
-GlobalVariable Property RoomCost auto
-GlobalVariable Property DES_UlfricRoomCost auto
-GlobalVariable[] Property CostsToUpdate auto
-GlobalVariable Property HorseCost auto
-GlobalVariable Property DES_UlfricHorseCost auto
-int[] property defaultCosts auto
-
-float goldValue
-
-GlobalVariable Property DES_CurrencyIsReverting auto
-
-Quest Property DES_CurrencyFramework auto
-Quest property HousePurchase auto
-
 Import SEA_BarterFunctions 
 
-Event OnInit()
-	InitializeThings()
-EndEvent
+Quest Property DES_CurrencyFramework auto
+Actor Property PlayerRef auto
+MiscObject Property DES_Ulfric Auto 
 
-Event OnPlayerGameLoad()
-	InitializeThings()
-EndEvent
+;--------------------------------------------------
+
+Formlist Property DES_RentRoomLocationExclusions auto
+float goldValue
 
 Function InitializeThings()
 	IF !DES_RentRoomLocationExclusions.HasForm(WindhelmLocation)
@@ -46,8 +20,24 @@ Function InitializeThings()
 	(Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).UlfricValue = goldValue as float
 endFunction
 
-EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
-	(DES_CurrencyFramework as DES_CurrencyFramework_Functions).SwapCurrency(DES_UlfricLocations, DES_WindhelmPriceAdjustmentPerk, DES_Ulfric)
+;--------------------------------------------------
+
+Keyword Property CWOwner auto
+Location Property WindhelmLocation auto
+Location Property SolitudeLocation auto
+GlobalVariable Property CWSons auto
+GlobalVariable Property CWImperial auto
+
+GlobalVariable Property DES_UlfricWorth auto
+GlobalVariable[] Property CostsToUpdate auto
+int[] property defaultCosts auto
+GlobalVariable Property RoomCost auto
+GlobalVariable Property DES_UlfricRoomCost auto
+GlobalVariable Property HorseCost auto
+GlobalVariable Property DES_UlfricHorseCost auto
+Quest property HousePurchase auto
+
+Function UpdateCosts()
 	IF WindhelmLocation.GetKeywordData(CWOwner) == CWImperial.GetValue() as int
 		DES_UlfricWorth.SetValue(2)
 		goldValue = 1/DES_UlfricWorth.GetValue() as float
@@ -74,4 +64,26 @@ EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
 	GetOwningQuest().UpdateCurrentInstanceGlobal(DES_UlfricRoomCost)
 	DES_UlfricHorseCost.SetValue(HorseCost.GetValue()*DES_UlfricWorth.GetValue())
 	GetOwningQuest().UpdateCurrentInstanceGlobal(DES_UlfricHorseCost)
+endFunction
+
+;--------------------------------------------------
+
+Event OnInit()
+	InitializeThings()
+EndEvent
+
+;--------------------------------------------------
+
+Event OnPlayerGameLoad()
+	InitializeThings()
+EndEvent
+
+;--------------------------------------------------
+
+Formlist Property DES_UlfricLocations auto
+Perk Property DES_WindhelmPriceAdjustmentPerk auto
+
+EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
+	UpdateCosts()
+	(DES_CurrencyFramework as DES_CurrencyFramework_Functions).SwapCurrency(DES_UlfricLocations, DES_WindhelmPriceAdjustmentPerk, DES_Ulfric)
 ENDEVENT
