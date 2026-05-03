@@ -17,11 +17,11 @@ bool Property WhiterunHousecarlGreet Auto conditional
 
 function PurchaseHouse(cell HouseInterior, key HouseKey, book DecoratingGuide, globalvariable GoldAmount)
 
-	IF GoldAmount != HPWindhelm
-	game.getplayer().RemoveItem(Gold, GoldAmount.getvalueint())
-	ELSE
-	game.getplayer().RemoveItem(Game.GetFormFromFile(0xDE5024, "Update.esm"), GoldAmount.getvalueint())
-	ENDIF	
+	if GetCurrency() == Gold
+		game.getplayer().RemoveItem(Gold, GoldAmount.getvalueint())
+	else
+		game.getplayer().RemoveItem(GetCurrency(), GoldAmount.getvalueint())
+	endif	
 
 	game.getplayer().AddItem(HouseKey)
 
@@ -31,7 +31,4 @@ function PurchaseHouse(cell HouseInterior, key HouseKey, book DecoratingGuide, g
 
 	game.IncrementStat( "Houses Owned" )
 
-endfunction 
-
-
-
+endfunction
