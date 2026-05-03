@@ -1,6 +1,6 @@
 Scriptname DES_UlfricCurrencySwapper extends ReferenceAlias
 
-Quest Property DES_CurrencyFramework auto
+DES_CurrencyFramework_Functions Property CurrencyFunctions auto
 Actor Property PlayerRef auto
 MiscObject Property DES_Ulfric Auto 
 
@@ -83,5 +83,5 @@ Perk Property DES_WindhelmPriceAdjustmentPerk auto
 
 EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
 	UpdateCosts()
-	(DES_CurrencyFramework as DES_CurrencyFramework_Functions).SwapCurrency(DES_UlfricLocations, DES_WindhelmPriceAdjustmentPerk, DES_Ulfric)
+	CurrencyFunctions.SwapCurrency(DES_UlfricLocations, DES_WindhelmPriceAdjustmentPerk, DES_Ulfric)
 ENDEVENT
