@@ -11,7 +11,7 @@ Bool locationInList
 EVENT OnActivate(ObjectReference akActionRef)
 	CurrencyFunctions.CheckLocation(DES_UlfricLocations)
 	IF locationInList
-		RevertCurrency()
+		ResetCurrency()
 	ENDIF
 	RegisterForMenu("Dialogue Menu")
 ENDEVENT
