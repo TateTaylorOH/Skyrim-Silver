@@ -6,12 +6,15 @@ MiscObject Property DES_Ulfric Auto
 
 ;--------------------------------------------------
 
-Formlist Property DES_RentRoomLocationExclusions auto
+Formlist Property DES_CustomCurrencyLocations auto
 float goldValue
 
-Function InitializeThings()
-	IF !DES_RentRoomLocationExclusions.HasForm(WindhelmLocation)
-		DES_RentRoomLocationExclusions.AddForm(WindhelmLocation)
+Function Initialize()
+	While CurrencyFunctions.RevertingList == 1
+		Utility.Wait(0.1)
+	endWhile
+	IF !DES_CustomCurrencyLocations.HasForm(WindhelmLocation)
+		DES_CustomCurrencyLocations.AddForm(WindhelmLocation)
 	ENDIF
 	goldValue = 1/DES_UlfricWorth.GetValue() as float
 	DES_Ulfric.SetGoldValue(goldValue as int)
@@ -63,13 +66,13 @@ endFunction
 ;--------------------------------------------------
 
 Event OnInit()
-	InitializeThings()
+	Initialize()
 EndEvent
 
 ;--------------------------------------------------
 
 Event OnPlayerGameLoad()
-	InitializeThings()
+	Initialize()
 EndEvent
 
 ;--------------------------------------------------

@@ -53,7 +53,7 @@
       },
       "changes":[
         {
-          "remove" : "F|Skyrim.esm",
+          "remove" : "0xF|Skyrim.esm",
           "add" : [
             "0xAC7|WindhelmUsesUlfrics.esp"
           ]
