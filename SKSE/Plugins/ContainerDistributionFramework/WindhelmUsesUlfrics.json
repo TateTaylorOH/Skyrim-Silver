@@ -70,12 +70,12 @@
         "allowVendors" : true,
         "onlyVendors" : true,
         "globals": [
-          "0xDES_UlfricWorth|1"
+          "DES_UlfricWorth|1"
        ]
       },
       "changes":[
         {
-          "remove" : "F|Skyrim.esm",
+          "remove" : "0xF|Skyrim.esm",
           "add" : [
             "0xAF5|WindhelmUsesUlfrics.esp"
           ]
