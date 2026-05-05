@@ -10,9 +10,6 @@ Formlist Property DES_CustomCurrencyLocations auto
 float goldValue
 
 Function Initialize()
-	While CurrencyFunctions.RevertingList == 1
-		Utility.Wait(0.1)
-	endWhile
 	IF !DES_CustomCurrencyLocations.HasForm(WindhelmLocation)
 		DES_CustomCurrencyLocations.AddForm(WindhelmLocation)
 	ENDIF
@@ -81,6 +78,9 @@ Formlist Property DES_UlfricLocations auto
 Perk Property DES_WindhelmPriceAdjustmentPerk auto
 
 EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
+	While CurrencyFunctions.CurrencyIsSwapping == 1
+		Utility.Wait(0.1)
+	endWhile
 	UpdateCosts()
 	CurrencyFunctions.SwapCurrency(DES_UlfricLocations, DES_WindhelmPriceAdjustmentPerk, DES_Ulfric)
 ENDEVENT
