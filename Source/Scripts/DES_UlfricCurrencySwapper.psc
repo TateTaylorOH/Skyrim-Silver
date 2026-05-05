@@ -15,7 +15,6 @@ Function InitializeThings()
 	ENDIF
 	goldValue = 1/DES_UlfricWorth.GetValue() as float
 	DES_Ulfric.SetGoldValue(goldValue as int)
-	(Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).UlfricValue = goldValue as float
 endFunction
 
 ;--------------------------------------------------
@@ -40,17 +39,14 @@ Function UpdateCosts()
 		DES_UlfricWorth.SetValue(2)
 		goldValue = 1/DES_UlfricWorth.GetValue() as float
 		DES_Ulfric.SetGoldValue(goldValue as int)
-		(Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).UlfricValue = goldValue as float
 	ELSEIF SolitudeLocation.GetKeywordData(CWOwner) == CWSons.GetValue() as int
 		DES_UlfricWorth.SetValue(1.0)
 		goldValue = 1/DES_UlfricWorth.GetValue() as float 
 		DES_Ulfric.SetGoldValue(goldValue as int)
-		(Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).UlfricValue = goldValue as float
 	ELSE
 		DES_UlfricWorth.SetValue(1.25)
 		goldValue = 1/DES_UlfricWorth.GetValue() as float
 		DES_Ulfric.SetGoldValue(goldValue as int)
-		(Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).UlfricValue = goldValue as float
 	ENDIF
 	int i = 0
 	while i < CostsToUpdate.Length

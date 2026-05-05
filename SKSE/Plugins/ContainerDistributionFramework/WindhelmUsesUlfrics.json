@@ -4,15 +4,14 @@
       "friendlyName" : "Windhelm Septims to Ulfrics",
       "conditions" : {
         "locations" : [
-          "18A57|Skyrim.esm"
-        ],
-        "bypassUnsafeContainers": true
+          "0x18A57|Skyrim.esm"
+        ]
       },
       "changes":[
         {
-          "remove" : "F|Skyrim.esm",
+          "remove" : "0xF|Skyrim.esm",
           "add" : [
-            "DE5024|Update.esm"
+            "0xDE5024|Update.esm"
           ]
         }
       ]
@@ -21,7 +20,7 @@
       "friendlyName" : "Fill Vendor Chests with Ulfrics | Worth = 0.80",
       "conditions" : {
         "locations" : [
-          "18A57|Skyrim.esm"
+          "0x18A57|Skyrim.esm"
        ],
         "bypassUnsafeContainers": true,
         "allowVendors" : true,
@@ -32,9 +31,9 @@
       },
       "changes":[
         {
-          "remove" : "F|Skyrim.esm",
+          "remove" : "0xF|Skyrim.esm",
           "add" : [
-            "AF5|WindhelmUsesUlfrics.esp"
+            "0xAF5|WindhelmUsesUlfrics.esp"
           ]
         }
       ]
@@ -43,7 +42,7 @@
       "friendlyName" : "Fill Vendor Chests with Ulfrics | Worth = 0.50",
       "conditions" : {
         "locations" : [
-          "18A57|Skyrim.esm"
+          "0x18A57|Skyrim.esm"
        ],
         "bypassUnsafeContainers": true,
         "allowVendors" : true,
@@ -56,7 +55,7 @@
         {
           "remove" : "F|Skyrim.esm",
           "add" : [
-            "AC7|WindhelmUsesUlfrics.esp"
+            "0xAC7|WindhelmUsesUlfrics.esp"
           ]
         }
       ]
@@ -65,20 +64,20 @@
       "friendlyName" : "Fill Vendor Chests with Ulfrics | Worth = 1.0",
       "conditions" : {
         "locations" : [
-          "18A57|Skyrim.esm"
+          "0x18A57|Skyrim.esm"
        ],
         "bypassUnsafeContainers": true,
         "allowVendors" : true,
         "onlyVendors" : true,
         "globals": [
-          "DES_UlfricWorth|1"
+          "0xDES_UlfricWorth|1"
        ]
       },
       "changes":[
         {
           "remove" : "F|Skyrim.esm",
           "add" : [
-            "AF5|WindhelmUsesUlfrics.esp"
+            "0xAF5|WindhelmUsesUlfrics.esp"
           ]
         }
       ]
@@ -87,14 +86,13 @@
       "friendlyName" : "Fill Eyrir's Chest with Ulfrics",
       "conditions" : {
         "references" : [
-          "84|WindhelmUsesUlfrics.esp"
-        ],
-        "bypassUnsafeContainers": true
+          "0x84|WindhelmUsesUlfrics.esp"
+        ]
       },
       "changes":[
         {
           "add" : [
-            "DE5024|Update.esm"
+            "0xDE5024|Update.esm"
           ],
           "count" : 444
         }
@@ -104,14 +102,13 @@
       "friendlyName" : "Fill Eyrir's Strongbox with Ulfrics",
       "conditions" : {
         "references" : [
-          "85|WindhelmUsesUlfrics.esp"
-        ],
-        "bypassUnsafeContainers": true
+          "0x85|WindhelmUsesUlfrics.esp"
+        ]
       },
       "changes":[
         {
           "add" : [
-            "DE5024|Update.esm"
+            "0xDE5024|Update.esm"
           ],
           "count" : 44
         }

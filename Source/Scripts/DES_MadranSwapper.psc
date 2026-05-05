@@ -4,6 +4,7 @@ Import SEA_BarterFunctions
 
 DES_CurrencyFramework_Functions Property CurrencyFunctions auto
 Formlist Property DES_UlfricLocations auto
+MiscObject Property DES_Ulfric auto
 Perk Property DES_WindhelmPriceAdjustmentPerk auto
 
 Bool locationInList
