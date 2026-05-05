@@ -78,7 +78,7 @@ Formlist Property DES_UlfricLocations auto
 Perk Property DES_WindhelmPriceAdjustmentPerk auto
 
 EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
-	While CurrencyFunctions.CurrencyIsSwapping == 1
+	While CurrencyFunctions.CurrencyIsSwapping
 		Utility.Wait(0.1)
 	endWhile
 	UpdateCosts()
