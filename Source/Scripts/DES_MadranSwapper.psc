@@ -12,6 +12,7 @@ Bool locationInList
 EVENT OnActivate(ObjectReference akActionRef)
 	CurrencyFunctions.CheckLocation(DES_UlfricLocations)
 	IF locationInList
+		SuppressGoldNotifications(false)
 		ResetCurrency()
 	ENDIF
 	RegisterForMenu("Dialogue Menu")
