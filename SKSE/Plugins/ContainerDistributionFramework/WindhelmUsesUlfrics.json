@@ -5,7 +5,11 @@
       "conditions" : {
         "locations" : [
           "0x18A57|Skyrim.esm"
-        ]
+        ],
+        "!references" : [     
+          "0x3EF10|Skyrim.esm" //Prisoner Belongings Chest
+        ],
+        "bypassUnsafeContainers": true
       },
       "changes":[
         {
