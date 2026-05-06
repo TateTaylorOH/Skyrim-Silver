@@ -7,7 +7,9 @@
           "0x18A57|Skyrim.esm"
         ],
         "!references" : [     
-          "0x3EF10|Skyrim.esm" //Prisoner Belongings Chest
+          "0x3EF10|Skyrim.esm", //Prisoner Belongs Chest
+          "0x108D38|Skyrim.esm", //Stolen Goods Chest
+          "0x64924|Skyrim.esm" //Dark Brotherhood Treasure
         ],
         "bypassUnsafeContainers": true
       },
