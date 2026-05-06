@@ -107,7 +107,8 @@
       "conditions" : {
         "references" : [
           "0x85|WindhelmUsesUlfrics.esp"
-        ]
+       ],
+        "bypassUnsafeContainers": true
       },
       "changes":[
         {
