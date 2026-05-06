@@ -1,5 +1,7 @@
 Scriptname DES_UlfricCurrencySwapper extends ReferenceAlias
 
+Import SEA_BarterFunctions 
+
 DES_CurrencyFramework_Functions Property CurrencyFunctions auto
 Actor Property PlayerRef auto
 MiscObject Property DES_Ulfric Auto 
@@ -84,3 +86,16 @@ EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
 	UpdateCosts()
 	CurrencyFunctions.SwapCurrency(DES_UlfricLocations, DES_WindhelmPriceAdjustmentPerk, DES_Ulfric)
 ENDEVENT
+
+;--------------------------------------------------
+;TUTORIAL
+;--------------------------------------------------
+
+Message Property DES_UlfricTutorialMessage auto
+
+Event OnCustomBarterMenu(Actor a_kSeller)
+;Triggers a one-time tutorial pop-up explaining how alternative currencies work.
+	IF GetCurrency() == DES_Ulfric
+		ShowTutorialMessage(DES_UlfricTutorialMessage)
+	ENDIF
+endEvent
