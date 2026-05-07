@@ -1,4 +1,4 @@
-Scriptname DES_UlfricCurrencySwapper extends DES_CurrencyFramework_Register
+Scriptname DES_UlfricCurrencySwapper extends DES_CurrencyFramework_UtilityInt
 
 DES_CurrencyFramework_Functions Property CurrencyFunctions auto
 
@@ -32,30 +32,6 @@ Function Initialize()
 
 	goldValue = 1/DES_UlfricWorth.GetValue() as float
 	DES_Ulfric.SetGoldValue(goldValue as int)
-
-endFunction
-
-;--------------------------------------------------
-
-Function OnPlayerLoadGame_Alias()
-
-	goldValue = 1/DES_UlfricWorth.GetValue() as float
-	DES_Ulfric.SetGoldValue(goldValue as int)
-
-endFunction
-
-;--------------------------------------------------
-
-Formlist Property DES_UlfricLocations auto
-Perk Property DES_WindhelmPriceAdjustmentPerk auto
-
-Function OnLocationChange_Alias()
-
-	While CurrencyFunctions.CurrencyIsSwapping
-		Utility.Wait(0.1)
-	endWhile
-	UpdateCosts()
-	CurrencyFunctions.SwapCurrency(DES_UlfricLocations, DES_WindhelmPriceAdjustmentPerk, DES_Ulfric)
 
 endFunction
 
@@ -110,3 +86,27 @@ Event OnInit()
 	Utility.Wait(1)
 	Initialize()
 EndEvent
+
+;--------------------------------------------------
+
+Function OnPlayerLoadGame_Alias()
+
+	goldValue = 1/DES_UlfricWorth.GetValue() as float
+	DES_Ulfric.SetGoldValue(goldValue as int)
+
+endFunction
+
+;--------------------------------------------------
+
+Formlist Property DES_UlfricLocations auto
+Perk Property DES_WindhelmPriceAdjustmentPerk auto
+
+Function OnLocationChange_Alias()
+
+	While CurrencyFunctions.CurrencyIsSwapping
+		Utility.Wait(0.1)
+	endWhile
+	UpdateCosts()
+	CurrencyFunctions.SwapCurrency(DES_UlfricLocations, DES_WindhelmPriceAdjustmentPerk, DES_Ulfric)
+
+endFunction
