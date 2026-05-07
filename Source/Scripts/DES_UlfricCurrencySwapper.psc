@@ -5,16 +5,23 @@ Actor Property PlayerRef auto
 MiscObject Property DES_Ulfric Auto 
 
 ;--------------------------------------------------
+;FUNCTIONS
+;--------------------------------------------------
 
 Formlist Property DES_CustomCurrencyLocations auto
 float goldValue
 
 Function Initialize()
+
 	IF !DES_CustomCurrencyLocations.HasForm(WindhelmLocation)
 		DES_CustomCurrencyLocations.AddForm(WindhelmLocation)
 	ENDIF
+
+	CurrencyFunctions.RegisterModuleQuest("WindhelmUsesUlfrics.esp", GetOwningQuest().GetFormID())
+
 	goldValue = 1/DES_UlfricWorth.GetValue() as float
 	DES_Ulfric.SetGoldValue(goldValue as int)
+
 endFunction
 
 ;--------------------------------------------------
@@ -61,15 +68,19 @@ Function UpdateCosts()
 endFunction
 
 ;--------------------------------------------------
+;EVENTS
+;--------------------------------------------------
 
 Event OnInit()
+	Utility.Wait(1)
 	Initialize()
 EndEvent
 
 ;--------------------------------------------------
 
 Event OnPlayerGameLoad()
-	Initialize()
+	goldValue = 1/DES_UlfricWorth.GetValue() as float
+	DES_Ulfric.SetGoldValue(goldValue as int)
 EndEvent
 
 ;--------------------------------------------------
