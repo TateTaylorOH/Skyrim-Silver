@@ -1,6 +1,11 @@
-Scriptname DES_UlfricCurrencySwapper extends ReferenceAlias
+Scriptname DES_UlfricCurrencySwapper extends Quest
 
 DES_CurrencyFramework_Functions Property CurrencyFunctions auto
+
+;--------------------------------------------------
+;SHARED PROPERTIES
+;--------------------------------------------------
+
 Actor Property PlayerRef auto
 MiscObject Property DES_Ulfric Auto 
 
@@ -17,10 +22,34 @@ Function Initialize()
 		DES_CustomCurrencyLocations.AddForm(WindhelmLocation)
 	ENDIF
 
-	CurrencyFunctions.RegisterModuleQuest("WindhelmUsesUlfrics.esp", GetOwningQuest().GetFormID())
+	CurrencyFunctions.RegisterModuleQuest("WindhelmUsesUlfrics.esp", GetFormID())
 
 	goldValue = 1/DES_UlfricWorth.GetValue() as float
 	DES_Ulfric.SetGoldValue(goldValue as int)
+
+endFunction
+
+;--------------------------------------------------
+
+Function OnPlayerLoadGame_Alias()
+
+	goldValue = 1/DES_UlfricWorth.GetValue() as float
+	DES_Ulfric.SetGoldValue(goldValue as int)
+
+endFunction
+
+;--------------------------------------------------
+
+Formlist Property DES_UlfricLocations auto
+Perk Property DES_WindhelmPriceAdjustmentPerk auto
+
+Function OnLocationChange_Alias()
+
+	While CurrencyFunctions.CurrencyIsSwapping
+		Utility.Wait(0.1)
+	endWhile
+	UpdateCosts()
+	CurrencyFunctions.SwapCurrency(DES_UlfricLocations, DES_WindhelmPriceAdjustmentPerk, DES_Ulfric)
 
 endFunction
 
@@ -62,9 +91,9 @@ Function UpdateCosts()
 		i += 1
 	endwhile
 	DES_UlfricRoomCost.SetValue(RoomCost.GetValue()*DES_UlfricWorth.GetValue())
-	GetOwningQuest().UpdateCurrentInstanceGlobal(DES_UlfricRoomCost)
+	UpdateCurrentInstanceGlobal(DES_UlfricRoomCost)
 	DES_UlfricHorseCost.SetValue(HorseCost.GetValue()*DES_UlfricWorth.GetValue())
-	GetOwningQuest().UpdateCurrentInstanceGlobal(DES_UlfricHorseCost)
+	UpdateCurrentInstanceGlobal(DES_UlfricHorseCost)
 endFunction
 
 ;--------------------------------------------------
@@ -75,23 +104,3 @@ Event OnInit()
 	Utility.Wait(1)
 	Initialize()
 EndEvent
-
-;--------------------------------------------------
-
-Event OnPlayerGameLoad()
-	goldValue = 1/DES_UlfricWorth.GetValue() as float
-	DES_Ulfric.SetGoldValue(goldValue as int)
-EndEvent
-
-;--------------------------------------------------
-
-Formlist Property DES_UlfricLocations auto
-Perk Property DES_WindhelmPriceAdjustmentPerk auto
-
-EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
-	While CurrencyFunctions.CurrencyIsSwapping
-		Utility.Wait(0.1)
-	endWhile
-	UpdateCosts()
-	CurrencyFunctions.SwapCurrency(DES_UlfricLocations, DES_WindhelmPriceAdjustmentPerk, DES_Ulfric)
-ENDEVENT
