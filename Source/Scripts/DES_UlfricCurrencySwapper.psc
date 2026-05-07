@@ -1,4 +1,4 @@
-Scriptname DES_UlfricCurrencySwapper extends Quest
+Scriptname DES_UlfricCurrencySwapper extends DES_CurrencyFramework_Register
 
 DES_CurrencyFramework_Functions Property CurrencyFunctions auto
 
@@ -22,7 +22,13 @@ Function Initialize()
 		DES_CustomCurrencyLocations.AddForm(WindhelmLocation)
 	ENDIF
 
-	CurrencyFunctions.RegisterModuleQuest("WindhelmUsesUlfrics.esp", GetFormID())
+	Int FormID = GetFormID()
+	Int HighBytes = Math.LogicalAnd(FormID, 0xFF000000)
+	If(HighBytes == 0xFE000000)
+		FormID = Math.LogicalAnd(FormID, 0x000FFFFF)
+	EndIf
+	FormID = Math.LogicalAnd(FormID, 0x00FFFFFF)
+	CurrencyFunctions.RegisterModuleQuest("WindhelmUsesUlfrics.esp", FormID)
 
 	goldValue = 1/DES_UlfricWorth.GetValue() as float
 	DES_Ulfric.SetGoldValue(goldValue as int)
