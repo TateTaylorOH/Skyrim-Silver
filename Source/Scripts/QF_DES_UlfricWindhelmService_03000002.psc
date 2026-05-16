@@ -1,20 +1,10 @@
 ;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
-;NEXT FRAGMENT INDEX 13
+;NEXT FRAGMENT INDEX 17
 Scriptname QF_DES_UlfricWindhelmService_03000002 Extends Quest Hidden
 
-;BEGIN ALIAS PROPERTY Calixto
+;BEGIN ALIAS PROPERTY UlfricExchanger
 ;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Calixto Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Oengul
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Oengul Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY WindhelmHostler
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_WindhelmHostler Auto
+ReferenceAlias Property Alias_UlfricExchanger Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN ALIAS PROPERTY Player
@@ -27,39 +17,9 @@ ReferenceAlias Property Alias_Player Auto
 ReferenceAlias Property Alias_Hillevi Auto
 ;END ALIAS PROPERTY
 
-;BEGIN ALIAS PROPERTY AvalAtheron
+;BEGIN ALIAS PROPERTY Tova
 ;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_AvalAtheron Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Torbjorn
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Torbjorn Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY WindhelmHostlerBackup
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_WindhelmHostlerBackup Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Madran
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Madran Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Hermir
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Hermir Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY UlfricExchanger
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_UlfricExchanger Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY CaptainLonelyGale
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_CaptainLonelyGale Auto
+ReferenceAlias Property Alias_Tova Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN ALIAS PROPERTY Jora
@@ -67,24 +27,34 @@ ReferenceAlias Property Alias_CaptainLonelyGale Auto
 ReferenceAlias Property Alias_Jora Auto
 ;END ALIAS PROPERTY
 
-;BEGIN ALIAS PROPERTY Rolff
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Rolff Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Tova
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Tova Auto
-;END ALIAS PROPERTY
-
 ;BEGIN ALIAS PROPERTY Brunwulf
 ;ALIAS PROPERTY TYPE ReferenceAlias
 ReferenceAlias Property Alias_Brunwulf Auto
 ;END ALIAS PROPERTY
 
-;BEGIN ALIAS PROPERTY Niranye
+;BEGIN ALIAS PROPERTY Torbjorn
 ;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Niranye Auto
+ReferenceAlias Property Alias_Torbjorn Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Oengul
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Oengul Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY CaptainLonelyGale
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_CaptainLonelyGale Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY WindhelmHostler
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_WindhelmHostler Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Calixto
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Calixto Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN ALIAS PROPERTY Torsten
@@ -92,47 +62,87 @@ ReferenceAlias Property Alias_Niranye Auto
 ReferenceAlias Property Alias_Torsten Auto
 ;END ALIAS PROPERTY
 
+;BEGIN ALIAS PROPERTY Madran
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Madran Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY WindhelmHostlerBackup
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_WindhelmHostlerBackup Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Rolff
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Rolff Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Hermir
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Hermir Auto
+;END ALIAS PROPERTY
+
 ;BEGIN ALIAS PROPERTY Nilsine
 ;ALIAS PROPERTY TYPE ReferenceAlias
 ReferenceAlias Property Alias_Nilsine Auto
 ;END ALIAS PROPERTY
 
-;BEGIN FRAGMENT Fragment_3
-Function Fragment_3()
+;BEGIN ALIAS PROPERTY AvalAtheron
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_AvalAtheron Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Niranye
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Niranye Auto
+;END ALIAS PROPERTY
+
+;BEGIN FRAGMENT Fragment_15
+Function Fragment_15()
 ;BEGIN CODE
-DES_UlfricExchangerDecreeScene.Start()
+Alias_Hillevi.trytoClear()
+DES_DecreeXMarkerHillevi.Disable()
+DES_DecreeXMarkerHillevi.Delete()
 ;END CODE
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_5
-Function Fragment_5()
+;BEGIN FRAGMENT Fragment_13
+Function Fragment_13()
 ;BEGIN CODE
-DES_UlfricExchangerDecreeScene.Stop()
-Alias_AvalAtheron.trytoClear()
+Alias_UlfricExchanger.trytoEvaluatePackage()
+;END CODE
+EndFunction
+;END FRAGMENT
 
-Alias_Hillevi.trytoClear()
-
+;BEGIN FRAGMENT Fragment_16
+Function Fragment_16()
+;BEGIN CODE
 Alias_Niranye.trytoClear()
+DES_DecreeXMarkerNiranye.Disable()
+DES_DecreeXMarkerNiranye.Delete()
 
-Alias_Oengul.trytoClear()
+Utility.Wait(2.0)
 
 Alias_Hermir.trytoClear()
+DES_DecreeXMarkerHermir.Disable()
+DES_DecreeXMarkerHermir.Delete()
 
-Alias_Brunwulf.trytoClear()
+Utility.Wait(3.0)
 
-Alias_CaptainLonelyGale.trytoClear()
+Alias_AvalAtheron.trytoClear()
+DES_DecreeXMarkerAval.Disable()
+DES_DecreeXMarkerAval.Delete()
 
-Alias_Jora.trytoClear()
+DES_UlfricExchangerDecreeScene.Stop()
+;END CODE
+EndFunction
+;END FRAGMENT
 
-Alias_Nilsine.trytoClear()
-
-Alias_Torbjorn.trytoClear()
-
-Alias_Torsten.trytoClear()
-
-Alias_Tova.trytoClear()
-Alias_UlfricExchanger.GetActorRef().EvaluatePackage()
+;BEGIN FRAGMENT Fragment_3
+Function Fragment_3()
+;BEGIN CODE
+DES_UlfricExchangerDecreeScene.Start()
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -144,3 +154,11 @@ Scene Property DES_UlfricExchangerDecreeScene  Auto
 Quest Property DES_UlfricWindhelmServices  Auto  
 
 MiscObject Property DES_Ulfric  Auto  
+
+ObjectReference Property DES_DecreeXMarkerAval auto
+
+ObjectReference Property DES_DecreeXMarkerHermir auto
+
+ObjectReference Property DES_DecreeXMarkerHillevi auto
+
+ObjectReference Property DES_DecreeXMarkerNiranye auto
