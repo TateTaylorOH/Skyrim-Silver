@@ -102,7 +102,6 @@ Function UpdateCosts()
 
 	;float UlfricTrainingMult = 10.0*DES_UlfricWorth.GetValue()
 	;float UlfricTrainingBase = 200.0*DES_UlfricWorth.GetValue()
-
 	;SetTrainingOverrides(true, UlfricTrainingMult, true, UlfricTrainingBase)
 
 endFunction
